@@ -1,20 +1,15 @@
-/*
-Bishop Brandstetter
-CSC222
-Date class
-*/
 
-#include <iostream>
 #include "Date.h"
+#include <sstream>
 
 Date::Date(int m, int d, int y)
 {
     setDate(m, d, y);
 }
+
 void Date::setDate(int m, int d, int y)
 {
-    if (y >= 1 && m >= 1 && m <= 12 &&
-        d >= 1 && d <= lastDay(m, y))
+    if (y >= 1 && m >= 1 && m <= 12 && d >= 1 && d <= lastDay(m, y))
     {
         month = m;
         day = d;
@@ -28,10 +23,26 @@ void Date::setDate(int m, int d, int y)
     }
 }
 
+int Date::getMonth() const
+{
+    return month;
+}
+
+int Date::getDay() const
+{
+    return day;
+}
+
+int Date::getYear() const
+{
+    return year;
+}
+
 bool Date::isLeapYear() const
 {
     return isLeapYear(year);
 }
+
 bool Date::isLeapYear(int y) const
 {
     if (y % 400 == 0)
@@ -55,8 +66,8 @@ bool Date::isLeapYear(int y) const
 int Date::lastDay() const
 {
     return lastDay(month, year);
-
 }
+
 int Date::lastDay(int m, int y) const
 {
     if (m == 2)
@@ -67,7 +78,7 @@ int Date::lastDay(int m, int y) const
         }
         else
         {
-            return 29;
+            return 28;
         }
     }
     else if (m == 4 || m == 6 || m == 9 || m == 11)
@@ -83,36 +94,44 @@ int Date::lastDay(int m, int y) const
         return 0;
     }
 }
-string Date::formatNumeric()const
+
+string Date::formatNumeric() const
 {
     stringstream ss;
+
     ss << month << "/" << day << "/" << year;
+
     return ss.str();
 }
+
 string Date::formatMonthFirst() const
 {
-    string monthNames[12] =
-    {
-        "January", "Febuary","March", "April", "May","June",
-        "July","August","September","October","November","December"
+    string monthNames[12] = {
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
     };
-        
+
     stringstream ss;
-    ss << monthNames[month - 1] << " " << day << ", " << year;
+
+    ss << monthNames[month - 1] << " "
+        << day << ", " << year;
 
     return ss.str();
 }
 
-string Date::formatDayFirst()const
+string Date::formatDayFirst() const
 {
-    string monthNames[12] =
-    {
-        "January", "Febuary","March", "April", "May","June",
-        "July","August","September","October","November","December"
+    string monthNames[12] = {
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
     };
+
     stringstream ss;
+
     ss << day << " " << monthNames[month - 1]
         << " " << year;
-    return ss.str(); 
-}
 
+    return ss.str();
+}
