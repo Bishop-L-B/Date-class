@@ -26,8 +26,9 @@ int main()
     cout << "February 2024: " << date3.lastDay() << endl;
     cout << "April 2025: " << date3.lastDay(4, 2025) << endl;
 
-    cout << "\nInvalid Date Test:" << endl;
-    cout << date4.formatNumeric() << endl;
+    cout << "\nInvalid Date Test (February 30, 2025):" << endl;
+    cout << "Expected: 1/1/1900" << endl;
+    cout << "Actual: " << date4.formatNumeric() << endl;
 
     cout << "\nAccessor Tests:" << endl;
     cout << "Month: " << date2.getMonth() << endl;
