@@ -39,5 +39,18 @@ int main()
     cout << "\nUpdated Date: " << date2.formatNumeric() << endl;
 
 
+    Date test6(5, 0, 2025);
+
+    cout << "\nInvalid Day Zero Test:" << endl;
+    cout << "Expected: 1/1/1900" << endl;
+    cout << "Actual: " << test6.formatNumeric() << endl;
+
+    Date test7(8, 15, -2025);
+
+    cout << "\nInvalid Year Test:" << endl;
+    cout << "Expected: 1/1/1900" << endl;
+    cout << "Actual: " << test7.formatNumeric() << endl;
+
+
     return 0;
 }
